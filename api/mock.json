@@ -1,0 +1,8 @@
+{
+  "product": [
+    { "id": 1, "title": "Iphone 5", "cost": "300$" },
+    { "id": 2, "title": "Notebook", "cost": "1000$" },
+    { "id": 3, "title": "Notebook 2", "cost": "1001$" }
+  ],
+  "profile": { "name": "user" }
+}
