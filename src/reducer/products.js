@@ -7,7 +7,8 @@ import { Record, Map, List } from 'immutable';
 const ProductModel = Record({
     id: null,
     title: null,
-    cost: null
+    cost: null,
+    img:null
 });
 
 const defaultState = new ReducerState({

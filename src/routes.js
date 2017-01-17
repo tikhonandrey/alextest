@@ -13,6 +13,7 @@ export default (
             <IndexRoute component={Products}/>
             <Route path = "signin" component={SignIn} />
             <Route path = "products" component={Products} />
+            <Route path = "basket" component={Products} />
 
             <Route path = "error" component={ErrorPage} />
             <Route path = "*" component={NotFound} />
