@@ -1,6 +1,6 @@
 import {
     LOAD_PRODUCTS,
-} from '../actions/products';
+} from '../actions/shoping';
 import { arrayToMap, ReducerState } from '../utils';
 import { Record, Map, List } from 'immutable';
 

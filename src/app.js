@@ -6,9 +6,3 @@ injectTapEventPlugin();
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 
 render(<MuiThemeProvider>{routes}</MuiThemeProvider>, document.getElementById('approot'));
-
-//todo XXX ****************************** test ******************************
-import store from './store/index';
-import {loadProducts} from './actions/products';
-
-store.dispatch(loadProducts());

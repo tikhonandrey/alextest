@@ -11,7 +11,7 @@ const enhancer = applyMiddleware(
     thunk,
     generateId,
     api,
-    createLogger()
+    // createLogger()
 );
 const store = createStore(reducer, {}, composeEnhancers(enhancer));
 

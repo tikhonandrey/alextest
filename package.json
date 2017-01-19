@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "concurrently \"npm run dev\" \"npm run api\"",
-    "api": "json-server --watch --delay 2000 ./api/mock.json --routes ./api/routes.json",
+    "api": "json-server --watch --delay 10 ./api/mock.json --routes ./api/routes.json",
     "dev": "webpack-dev-server --hot --inline",
     "build": "webpack"
   },
@@ -40,6 +40,7 @@
     "react-tap-event-plugin": "^2.0.0",
     "redux": "^3.6.0",
     "redux-logger": "*",
-    "redux-thunk": "^2.1.0"
+    "redux-thunk": "^2.1.0",
+    "react-router-redux": "*"
   }
 }

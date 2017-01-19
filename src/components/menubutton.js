@@ -4,13 +4,10 @@ import { Link } from 'react-router'
 
 const styles = {
     largeIcon: {
-        width: 60,
-        height: 60,
+        color: '#fff'
     },
     large: {
-        width: 120,
-        height: 120,
-        padding: 30
+
     }
 };
 function MenuButton(props) {

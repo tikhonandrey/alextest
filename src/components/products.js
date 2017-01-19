@@ -5,7 +5,7 @@ import IconButton from 'material-ui/IconButton';
 import Subheader from 'material-ui/Subheader';
 import Preloader from '../components/preloader';
 import StarBorder from 'material-ui/svg-icons/toggle/star-border';
-import {loadProducts, addToBasket} from '../actions/products';
+import {loadProducts, addToBasket} from '../actions/shoping';
 import ActionShop from 'material-ui/svg-icons/action/shopping-cart';
 const styles = {
     root: {
@@ -42,6 +42,10 @@ export default class Products extends Component {
         loadProducts()
     }
 
+    addToBasket=(productId)=>()=>{
+        this.props.addToBasket(productId)
+    };
+
     render() {
         const {products, loading} = this.props;
         if(products.loading) return <div style={styles.root}><Preloader/></div>;
@@ -57,7 +61,7 @@ export default class Products extends Component {
                             key={item.id}
                             title={<span style={styles.title}>{item.title}</span>}
                             subtitle={<h2>{item.cost}</h2>}
-                            actionIcon={<IconButton><ActionShop color="white" /></IconButton>}
+                            actionIcon={<IconButton onClick={this.addToBasket(item.id)}><ActionShop color="white" /></IconButton>}
                         >
                             <img src={item.img} />
                         </GridTile>
