@@ -59,11 +59,13 @@ export default class Header extends Component {
                 icon={<ActionBackToShop/>}/>
         </Link>;
         const SignIn = <MenuButton link = "/signin" name="Войти"><ActionUser/></MenuButton>;
-
+        const basketLayout = <div style={styles.username}>
+            <h3>{username}</h3>&nbsp;&nbsp;&nbsp;<Basket/>
+        </div>;
         const settings = {
             showMenuIconButton: showBackToProduct,
             iconElementLeft: BackToShopping,
-            iconElementRight: username === '' ? SignIn : <div style={styles.username}><h3>{username}</h3>&nbsp;&nbsp;&nbsp;<Basket/></div>
+            iconElementRight: username === '' ? SignIn : basketLayout
         };
         return <AppBar {...settings}/>;
     }

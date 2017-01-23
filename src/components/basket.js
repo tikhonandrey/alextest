@@ -43,7 +43,7 @@ export default class Basket extends React.Component {
     };
 
     handleDelete=(basketId)=>()=>{
-        this.props.deleteFromBasket(basketId);
+        this.props.deleteFromBasket(parseInt(basketId));
     };
 
     handleRequestClose = () => {
@@ -54,7 +54,7 @@ export default class Basket extends React.Component {
     render() {
         const {open, anchorEl} = this.state;
         const {basketItems} = this.props;
-        const count = 0;
+        const count = basketItems.total;
 
         const basket = <ActionBasket
             onTouchTap={this.handleTouchTap}
@@ -79,29 +79,31 @@ export default class Basket extends React.Component {
                         <List>
                             <Subheader>У Вас в корзине</Subheader>
 
-                            {basketItems.reduce((acc, item, i, array) => {
+                            {basketItems.entities.reduce((acc, item, i, array) => {
                                 const product = item.product;
 
 
                                 acc.push(
                                     <ListItem
-                                        key={item.id}
+                                        key={product.id}
                                         leftAvatar={
                                             <Avatar style={styles.img} src={product.img} />}
                                         rightIconButton={
                                             <IconButton
-                                                onClick={this.handleDelete(item.id)}
-                                                touch={true}
-                                                tooltip="Delete"
+                                                onClick={this.handleDelete(product.id)}
+                                                touch
+                                                tooltip="Удалить"
                                                 tooltipPosition="bottom-left">
                                                 <DelIcon color={grey400} />
                                             </IconButton>}
                                         primaryText={<h2>{product.title} <span>{product.cost}</span></h2>}
                                         secondaryText={
-                                            <h2>{item.count}</h2>
+                                            <h2>количество: {item.count}</h2>
                                         }
                                     />);
-                                if(array.size != i || array.size != 1) acc.push(<Divider key={'divider' + item.id} inset={true} />);
+                                if( item !== array.last() ){
+                                    acc.push(<Divider key={'divider' + product.id} inset />);
+                                }
 
 
                                 return acc;

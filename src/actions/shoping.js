@@ -13,8 +13,7 @@ export function addToBasket(product) {
 
     return {
         type: ADD_TO_BASKET,
-        payload: product,
-        generateId: true
+        payload: product
     }
 }
 export function deleteFromBasket(basketId) {
