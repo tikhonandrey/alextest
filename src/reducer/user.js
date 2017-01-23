@@ -2,7 +2,7 @@ import {
     SET_USER_NAME
 } from '../actions/user';
 
-export default (username = '', action) => {
+export default (username = 'User', action) => {
     const { type, payload} = action;
 
     switch (type) {

@@ -42,8 +42,8 @@ export default class Products extends Component {
         loadProducts()
     }
 
-    addToBasket=(productId)=>()=>{
-        this.props.addToBasket(productId)
+    addToBasket=(product)=>()=>{
+        this.props.addToBasket(product)
     };
 
     render() {
@@ -61,7 +61,7 @@ export default class Products extends Component {
                             key={item.id}
                             title={<span style={styles.title}>{item.title}</span>}
                             subtitle={<h2>{item.cost}</h2>}
-                            actionIcon={<IconButton onClick={this.addToBasket(item.id)}><ActionShop color="white" /></IconButton>}
+                            actionIcon={<IconButton onClick={this.addToBasket(item)}><ActionShop color="white" /></IconButton>}
                         >
                             <img src={item.img} />
                         </GridTile>

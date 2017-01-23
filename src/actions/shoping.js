@@ -9,11 +9,12 @@ export function loadProducts() {
     }
 }
 
-export function addToBasket(productId) {
+export function addToBasket(product) {
 
     return {
         type: ADD_TO_BASKET,
-        payload: productId      
+        payload: product,
+        generateId: true
     }
 }
 export function deleteFromBasket(basketId) {

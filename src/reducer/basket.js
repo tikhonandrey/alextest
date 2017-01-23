@@ -6,6 +6,7 @@ import { arrayToMap } from '../utils';
 import { Record, Map, List } from 'immutable';
 
 const BasketModel = Record({
+    id: null,
     product: null,
     count:null
 });
@@ -23,13 +24,14 @@ export default (basket = defaultState, action) => {
                 return basket.setIn([payload,'count'], ++count);
             }else{
                 return basket.set(payload, new BasketModel({
+                    id: generatedId,
                     product: payload,
                     count:1
                 }));
             }
 
         case DELETE_FROM_BASKET:
-            return basket.delete(payload )
+            return basket.delete( payload )
               
 
     }
