@@ -1,4 +1,4 @@
-import _uuid from 'lodash-uuid';
+import _uuid from 'uuid';
 
 export default store => next => action => {
     const {
@@ -10,6 +10,6 @@ export default store => next => action => {
 
     next({
         ...rest,
-        generatedId: _uuid()
+        generatedId: _uuid.v1()
     })
 }
