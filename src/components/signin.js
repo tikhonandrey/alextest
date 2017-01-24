@@ -11,13 +11,17 @@ const style = {
     display: 'block'
 };
 
-export default class Signin extends React.Component {
 
+@connect((state, props) => ({}),{ setUserName })
+export default class Signin extends React.Component {
+    setName=(userdata)=>{
+        this.props.setUserName(userdata);
+    };
     render() {
         return (
             <Paper style={style}>
-                <OAuthSignInButton/>
-                <EmailSignInForm/>
+                <OAuthSignInButton provider="github" next={this.setName}/>
+                <EmailSignInForm />
             </Paper>
         );
     }

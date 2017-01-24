@@ -22,31 +22,22 @@ const styles = {
 
 
 @connect((state, props) => ({
-    username: state.username
+    username: state.username,
+    routing: state.routing
 }))
 export default class Header extends Component {
     static propTypes = {
 
     };
     state = {
-        showBackToProduct: false
+        showBackToProduct: true
     };
 
-    componentWillMount() {
-        this.setState({
-            showBackToProduct: !this.context.router.isActive('products')
-        })
-    }
-
-    componentWillReceiveProps(props, context) {
-        this.setState({
-            showBackToProduct: !context.router.isActive('products')
-        })
-    }
-
-    static contextTypes = {
-        router: PropTypes.object
-    }
+    // componentWillReceiveProps(nextProps) {
+    //     this.setState({
+    //         showBackToProduct: !nextProps.routing.isActive('products')
+    //     })
+    // }
 
     render() {
         const {username} = this.props;
@@ -60,12 +51,12 @@ export default class Header extends Component {
         </Link>;
         const SignIn = <MenuButton link = "/signin" name="Войти"><ActionUser/></MenuButton>;
         const basketLayout = <div style={styles.username}>
-            <h3>{username}</h3>&nbsp;&nbsp;&nbsp;<Basket/>
+            {SignIn}&nbsp;&nbsp;&nbsp;<Basket/>
         </div>;
         const settings = {
             showMenuIconButton: showBackToProduct,
             iconElementLeft: BackToShopping,
-            iconElementRight: username === '' ? SignIn : basketLayout
+            iconElementRight: basketLayout
         };
         return <AppBar {...settings}/>;
     }
