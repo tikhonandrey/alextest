@@ -15,9 +15,16 @@ import Badge from 'material-ui/Badge';
 import {deleteFromBasket} from '../actions/shoping';
 import { connect } from 'react-redux';
 
+
 const styles = {
     img:{
         borderRadius: 3
+    },
+    popuplist:{
+        minWidth: 300
+    },
+    button: {
+        color: '#fff'
     }
 };
 
@@ -43,7 +50,7 @@ export default class Basket extends React.Component {
     };
 
     handleDelete=(basketId)=>()=>{
-        this.props.deleteFromBasket(parseInt(basketId));
+        this.props.deleteFromBasket(basketId);
     };
 
     handleRequestClose = () => {
@@ -56,10 +63,16 @@ export default class Basket extends React.Component {
         const {basketItems} = this.props;
         const count = basketItems.total;
 
-        const basket = <ActionBasket
-            onTouchTap={this.handleTouchTap}
-            label="Корзина"
-        />;
+        const basket =  <IconButton
+            tooltipPosition="bottom-center"
+            touch
+            iconStyle={styles.button}
+            tooltip="Корзина">
+            <ActionBasket
+                onTouchTap={this.handleTouchTap}
+            />
+        </IconButton>;
+
 
         return (
             <div>
@@ -76,7 +89,7 @@ export default class Basket extends React.Component {
                     targetOrigin={{horizontal: 'left', vertical: 'top'}}
                     onRequestClose={this.handleRequestClose}
                     animation={PopoverAnimationVertical}>
-                        <List>
+                        <List style={styles.popuplist}>
                             <Subheader>У Вас в корзине</Subheader>
 
                             {basketItems.entities.reduce((acc, item, i, array) => {

@@ -14,6 +14,7 @@ function MenuButton(props) {
     return (
         <Link to = {props.link} activeClassName="active">
             <IconButton
+                touch
                 iconStyle={styles.largeIcon}
                 style={styles.large}
                 tooltip={props.name}
