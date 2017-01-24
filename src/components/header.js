@@ -33,11 +33,19 @@ export default class Header extends Component {
         showBackToProduct: true
     };
 
-    // componentWillReceiveProps(nextProps) {
-    //     this.setState({
-    //         showBackToProduct: !nextProps.routing.isActive('products')
-    //     })
-    // }
+    componentWillMount(){
+        this.setState({
+            showBackToProduct: !~['/products', '/'].indexOf(this.props.routing.locationBeforeTransitions.pathname)
+        })
+    }
+
+
+    componentWillReceiveProps(nextProps) {
+        console.log('popa', nextProps.routing.locationBeforeTransitions.pathname);
+        this.setState({
+            showBackToProduct: !~['/products', '/'].indexOf(nextProps.routing.locationBeforeTransitions.pathname)
+        })
+    }
 
     render() {
         const {username} = this.props;
