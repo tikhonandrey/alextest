@@ -1,3 +1,5 @@
+import {SERVER_API} from '../constants';
+
 export const LOAD_PRODUCTS = 'LOAD_PRODUCTS';
 export const ADD_TO_BASKET = 'ADD_TO_BASKET';
 export const DELETE_FROM_BASKET = 'DELETE_FROM_BASKET';
@@ -5,7 +7,7 @@ export const DELETE_FROM_BASKET = 'DELETE_FROM_BASKET';
 export function loadProducts() {
     return {
         type: LOAD_PRODUCTS,
-        callAPI: 'http://localhost:3000/api/product'
+        callAPI: SERVER_API + 'product'
     }
 }
 
