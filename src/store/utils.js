@@ -10,9 +10,16 @@ export function authorize(url) {
 export function renderApp({cookies, isServer, currentLocation} = {}) {
     //todo настройка
     return store.dispatch(
-        configure(
-            {apiUrl: SERVER_API + 'user'},
-            {isServer, cookies, currentLocation}
-    ))
+        configure({
+            apiUrl:             SERVER_API,
+            signOutPath:        'sign_out',
+            emailSignInPath:    'sign_in',
+
+            authProviderPaths: {
+                github:    'github',
+                facebook:  'facebook',
+                google:    'google_oauth2'
+            }
+        }, {isServer,cookies, currentLocation}))
         
 }
