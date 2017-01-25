@@ -9,6 +9,9 @@ import {loadProducts, addToBasket} from '../actions/shoping';
 import ActionShop from 'material-ui/svg-icons/action/shopping-cart';
 const styles = {
     root: {
+        position:'absolute',
+        width: '100%',
+
         display: 'flex',
         flexWrap: 'wrap',
         justifyContent: 'space-around',
@@ -17,7 +20,7 @@ const styles = {
     gridList: {
         width: 500,
         height: 450,
-        overflowY: 'auto',
+        overflowY: 'auto'
     },
     title:{
         fontSize: 20

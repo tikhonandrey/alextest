@@ -41,7 +41,6 @@ export default class Header extends Component {
 
 
     componentWillReceiveProps(nextProps) {
-        console.log('popa', nextProps.routing.locationBeforeTransitions.pathname);
         this.setState({
             showBackToProduct: !~['/products', '/'].indexOf(nextProps.routing.locationBeforeTransitions.pathname)
         })
@@ -53,7 +52,7 @@ export default class Header extends Component {
 
         const BackToShopping = <Link to ="/products" activeClassName="active">
             <FlatButton
-                label="К покупкам"
+                label={window.document.body.clientWidth < 320 ? "" : "К покупкам"}
                 style={styles.button}
                 icon={<ActionBackToShop/>}/>
         </Link>;
