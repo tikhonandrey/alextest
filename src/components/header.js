@@ -10,9 +10,10 @@ import { Link } from 'react-router'
 
 
 const styles = {
-    username: {
+    centering: {
         display: 'flex',
-        alignItems: 'center'
+        alignItems: 'center',
+        marginTop: 0
     },
     button: {
         color: '#fff'
@@ -54,17 +55,22 @@ export default class Header extends Component {
             <FlatButton
                 label={window.document.body.clientWidth < 320 ? "" : "К покупкам"}
                 style={styles.button}
-                icon={<ActionBackToShop/>}/>
+                icon={
+                    <ActionBackToShop/>
+                }/>
         </Link>;
         const SignIn = <MenuButton link = "/signin" name="Войти"><ActionUser/></MenuButton>;
-        const basketLayout = <div style={styles.username}>
+        const basketLayout = <div style={styles.centering}>
             {SignIn}&nbsp;&nbsp;&nbsp;<Basket/>
         </div>;
         const settings = {
             showMenuIconButton: showBackToProduct,
             iconElementLeft: BackToShopping,
+            iconStyleLeft: styles.centering,
             iconElementRight: basketLayout
         };
+
+
         return <AppBar {...settings}/>;
     }
 }
