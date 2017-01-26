@@ -13,7 +13,8 @@ const ProductModel = Record({
 
 const defaultState = new ReducerState({
     entities: arrayToMap([], ProductModel),
-    loading: false
+    loading: false,
+    loaded: false
 });
 
 export default (products = defaultState, action) => {
@@ -27,6 +28,7 @@ export default (products = defaultState, action) => {
             return products
                 .set('entities', arrayToMap(response, ProductModel))
                 .set('loading', false)
+                .set('loaded', true)
 
     }
 

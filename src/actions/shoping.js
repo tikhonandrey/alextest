@@ -4,12 +4,16 @@ export const LOAD_PRODUCTS = 'LOAD_PRODUCTS';
 export const ADD_TO_BASKET = 'ADD_TO_BASKET';
 export const DELETE_FROM_BASKET = 'DELETE_FROM_BASKET';
 
-export function loadProducts() {
-    return {
-        type: LOAD_PRODUCTS,
-        callAPI: SERVER_API + 'product'
+export const loadProducts=()=>(dispatch, getState)=>{
+    const products = getState().products;
+
+    if( !products.get('loaded') && !products.get('loading')) {
+        dispatch({
+            type: LOAD_PRODUCTS,
+            callAPI: SERVER_API + 'product'
+        })
     }
-}
+};
 
 export function addToBasket(product) {
 
