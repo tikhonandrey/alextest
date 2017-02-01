@@ -13,7 +13,7 @@ module.exports = {
     devServer: {
         proxy: [{
             path: '/api/',
-            target: 'http://localhost:3001'
+            target: 'http://localhost:3000'
         }],
         historyApiFallback: true
     },
@@ -50,5 +50,7 @@ module.exports = {
         extensions: ['','.js']
 
     },
-
-}
+    node: {
+        fs: 'empty'
+    }
+};

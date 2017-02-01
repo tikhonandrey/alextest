@@ -63,14 +63,13 @@ export default class Basket extends React.Component {
         const {basketItems} = this.props;
         const count = basketItems.total;
 
-        const basket =  <IconButton
+        const basket = <IconButton
             tooltipPosition="bottom-center"
             touch
             iconStyle={styles.button}
+            onTouchTap={this.handleTouchTap}
             tooltip="Корзина">
-            <ActionBasket
-                onTouchTap={this.handleTouchTap}
-            />
+            <ActionBasket/>
         </IconButton>;
 
 

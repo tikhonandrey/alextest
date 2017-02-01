@@ -3,11 +3,13 @@ import { connect } from 'react-redux';
 import AppBar from 'material-ui/AppBar';
 import MenuButton from '../components/menubutton';
 import Basket from '../components/basket';
+import { logOut } from '../actions/user';
 import ActionBackToShop from 'material-ui/svg-icons/navigation/arrow-back';
 import ActionUser from 'material-ui/svg-icons/social/person';
+import ActionExit from 'material-ui/svg-icons/action/exit-to-app';
 import FlatButton from 'material-ui/FlatButton';
 import { Link } from 'react-router'
-
+import IconButton from 'material-ui/IconButton';
 
 const styles = {
     centering: {
@@ -17,7 +19,10 @@ const styles = {
     },
     button: {
         color: '#fff'
-
+    },
+    exit:{
+        color: '#fff',
+        padding: 12
     }
 };
 
@@ -25,7 +30,7 @@ const styles = {
 @connect((state, props) => ({
     username: state.username,
     routing: state.routing
-}))
+}),{ logOut })
 export default class Header extends Component {
     static propTypes = {
 
@@ -33,13 +38,13 @@ export default class Header extends Component {
     state = {
         showBackToProduct: true
     };
-
+    //todo корзина остается при последнем минусе
+    //todo стейт корзины хранить в localStorage
     componentWillMount(){
         this.setState({
-            showBackToProduct: !~['/products', '/'].indexOf(this.props.routing.locationBeforeTransitions.pathname)
+             showBackToProduct: !~['/products', '/'].indexOf(this.props.routing.locationBeforeTransitions.pathname)
         })
     }
-
 
     componentWillReceiveProps(nextProps) {
         this.setState({
@@ -51,7 +56,7 @@ export default class Header extends Component {
         const {username} = this.props;
         const {showBackToProduct} = this.state;
 
-        const BackToShopping = <Link to ="/products" activeClassName="active">
+        const backToShopping = <Link to ="/products" activeClassName="active">
             <FlatButton
                 label={window.document.body.clientWidth < 320 ? "" : "К покупкам"}
                 style={styles.button}
@@ -59,13 +64,23 @@ export default class Header extends Component {
                     <ActionBackToShop/>
                 }/>
         </Link>;
-        const SignIn = <MenuButton link = "/signin" name="Войти"><ActionUser/></MenuButton>;
+        const exit = <IconButton
+            tooltipPosition="bottom-center"
+            touch
+            iconStyle={styles.button}
+            onTouchTap={this.props.logOut}
+            tooltip="Выход">
+            <ActionExit/>
+        </IconButton>;
+        const signIn = (username == '') ?
+            <MenuButton link = "/signin" name="Войти"><ActionUser/></MenuButton> :
+            <h1>{username}</h1>;
         const basketLayout = <div style={styles.centering}>
-            {SignIn}&nbsp;&nbsp;&nbsp;<Basket/>
+            {signIn}&nbsp;&nbsp;&nbsp;<Basket/>{(username != '') && exit}
         </div>;
         const settings = {
             showMenuIconButton: showBackToProduct,
-            iconElementLeft: BackToShopping,
+            iconElementLeft: backToShopping,
             iconStyleLeft: styles.centering,
             iconElementRight: basketLayout
         };

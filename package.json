@@ -4,13 +4,14 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "concurrently \"npm run dev\" \"npm run api\"",
-    "api": "json-server --watch --delay 10 ./api/mock.json --routes ./api/routes.json",
+    "start": "concurrently \"npm run dev\" \"npm run api2\"",
+    "api": "json-server --watch --delay 2000 ./api/mock.json --routes ./api/routes.json",
+    "api2": "node ./api/server.js",
     "dev": "webpack-dev-server --hot --inline",
     "build": "webpack"
   },
   "author": "tikhon.andrey",
-  "license": "ISC",
+  "license": "WTFPL",
   "devDependencies": {
     "babel-core": "^6.13.2",
     "babel-loader": "^6.2.4",
@@ -20,29 +21,40 @@
     "babel-preset-stage-0": "^6.5.0",
     "concurrently": "^3.1.0",
     "css-loader": "^0.26.0",
+    "file-loader": "*",
     "jquery": "^3.1.1",
+    "json-server": "*",
+    "passport-local": "^1.0.0",
+    "passport": "*",
     "style-loader": "^0.13.1",
     "webpack": "^1.13.1",
-    "webpack-dev-server": "^1.14.1",
-    "json-server": "*",
-    "file-loader": "*"
+    "webpack-dev-server": "^1.14.1"
   },
   "dependencies": {
     "babel-plugin-transform-decorators-legacy": "^1.3.4",
+    "cookie-parser": "^1.4.3",
+    "cors": "^2.8.1",
+    "express-session": "^1.15.0",
     "immutable": "^3.8.1",
     "lodash": "*",
     "material-ui": "*",
     "react": "^15.3.2",
     "react-dom": "^15.3.2",
+    "react-facebook-login": "^3.4.3",
     "react-redux": "^4.4.6",
     "react-router": "^3.0.0",
     "react-router-redux": "*",
     "react-router-transition": "0.0.6",
     "react-tap-event-plugin": "^2.0.0",
     "redux": "^3.6.0",
-    "redux-auth": "*",
+          "redux-auth": "*",
     "redux-logger": "*",
     "redux-thunk": "^2.1.0",
+    "reselect": "^2.5.4",
     "uuid": "*"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:tikhonandrey/alextest.git"
   }
 }

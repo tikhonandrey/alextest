@@ -15,16 +15,16 @@ export const loadProducts=()=>(dispatch, getState)=>{
     }
 };
 
-export function addToBasket(product) {
+export function addToBasket(productId) {
 
     return {
         type: ADD_TO_BASKET,
-        payload: product
+        payload: productId
     }
 }
-export function deleteFromBasket(basketId) {
+export function deleteFromBasket(productId) {
     return {
         type: DELETE_FROM_BASKET,
-        payload: basketId
+        payload: productId
     }
 }
