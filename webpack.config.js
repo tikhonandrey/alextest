@@ -1,4 +1,5 @@
 var path = require('path');
+var DefinePlugin = require('webpack/lib/DefinePlugin');
 
 module.exports = {
     devtool: 'source-map',
@@ -17,6 +18,14 @@ module.exports = {
         }],
         historyApiFallback: true
     },
+    plugins: [
+        new DefinePlugin({
+            'process.env': {
+                'NODE_ENV': JSON.stringify('development'),
+                'PROJECT_URL': JSON.stringify('http://localhost:3000/api/')
+            }
+        })
+    ],
     module: {
         loaders: [
             {
