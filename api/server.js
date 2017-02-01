@@ -39,7 +39,7 @@ app.post('/api/sign_in', (req, res, next)=>{
     if(body){
         res.jsonp(
             Object.assign(body, TEST_USER_DATA, {
-                name: body.login
+                name: body.type == 'email' ? body.login :body.name
             })
         );
     }

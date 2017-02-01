@@ -16,14 +16,6 @@ export function logOut() {
         type: LOGOUT_USER
     }
 }
-export const setUserNameAndGoShoping =(name)=>(dispatch, getState)=> {
-
-    dispatch( setUserName(name) );
-
-    dispatch( push('/products') );
-    
-};
-
 
 const loginUserCallback = (next, action, response)=>{
 

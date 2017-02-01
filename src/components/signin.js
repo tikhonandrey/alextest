@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import {setUserNameAndGoShoping,signIn } from '../actions/user';
+import {signIn } from '../actions/user';
 import { EmailSignInForm } from "redux-auth/material-ui-theme";
 import Paper from 'material-ui/Paper';
 import FacebookLogin from 'react-facebook-login';
@@ -31,23 +31,16 @@ const style = {
 };
 
 
-@connect((state, props) => ({}),{ signIn, setUserNameAndGoShoping })
+@connect((state, props) => ({}),{ signIn })
 export default class Signin extends React.Component {
-    setName=(type)=>(userdata)=>{
-        // console.log('userdata: ',userdata);
-        this.props.setUserNameAndGoShoping(
-            type==='oauth' ? userdata.name : userdata.user.name
-        );
-    };
     state={
+        type: 'email',
         login: '',
         password:''
     };
     handleSubmit(e){
         e.preventDefault();
-        console.log('handleSubmit');
         this.props.signIn(this.state)
-        
     }
     handleInput=(field)=>(e, value)=>{
         this.setState({
@@ -61,7 +54,7 @@ export default class Signin extends React.Component {
                 <FacebookLogin
                     textButton="FACEBOOK"
                     appId="376365562743158"
-                    callback={this.setName('oauth')} />
+                    callback={this.props.signIn}>
 
                 <form style={{clear: "both", overflow: "hidden"}}
                       onSubmit={this.handleSubmit.bind(this)}>
