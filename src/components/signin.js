@@ -1,7 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import {signIn } from '../actions/user';
-import { EmailSignInForm } from "redux-auth/material-ui-theme";
 import Paper from 'material-ui/Paper';
 import FacebookLogin from 'react-facebook-login';
 
