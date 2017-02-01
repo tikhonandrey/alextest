@@ -54,7 +54,7 @@ export default class Signin extends React.Component {
                 <FacebookLogin
                     textButton="FACEBOOK"
                     appId="376365562743158"
-                    callback={this.props.signIn}>
+                    callback={this.props.signIn}/>
 
                 <form style={{clear: "both", overflow: "hidden"}}
                       onSubmit={this.handleSubmit.bind(this)}>

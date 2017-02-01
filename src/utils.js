@@ -12,3 +12,22 @@ export const ReducerState = Record({
     loading: false,
     loaded: false
 })
+
+
+
+//todo JSON?
+export function persistState(key, state) {
+    window.localStorage.setItem(key, state)
+}
+
+export function getPersistedState(key) {
+    const data = window.localStorage.getItem(key);
+
+    if(data){
+        console.log('data',data);
+    }else{
+
+    }
+
+    return ;
+}

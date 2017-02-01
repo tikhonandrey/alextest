@@ -14,7 +14,7 @@ const enhancer = applyMiddleware(
     generateId,
     api,
     routerMiddleware(browserHistory),
-    createLogger()
+    // createLogger()
 );
 const store = createStore(reducer, {}, composeEnhancers(enhancer));
 

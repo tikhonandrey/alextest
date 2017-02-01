@@ -2,7 +2,7 @@ import {
     ADD_TO_BASKET,
     DELETE_FROM_BASKET
 } from '../actions/shoping';
-import { arrayToMap } from '../utils';
+import { arrayToMap, getPersistedState, persistState } from '../utils';
 import { Record, Map, List } from 'immutable';
 
 const BasketModel = Record({
@@ -11,9 +11,9 @@ const BasketModel = Record({
 });
 const defaultStateCreator = Record({
     entities: arrayToMap([], BasketModel),
-    total: 0
+    total: 0   
 });
-const defaultState = defaultStateCreator();
+const defaultState = getPersistedState('basket') || defaultStateCreator();
 
 export default (basket = defaultState, action) => {
     const { type, payload, response, error, generatedId } = action;
